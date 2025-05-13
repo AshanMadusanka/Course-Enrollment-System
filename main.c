@@ -73,3 +73,12 @@ void displayStudentAndCourses(Students_t *students,uint32_t *student_count) {
 
 
 }
+
+
+void displayMessages() {
+
+    printf("Add Student     (1)\n");
+    printf("Add Course     (2)\n");
+    printf("Show enroll Student in course     (2)\n");
+    printf("Show students and courses     (1)\n");
+}
