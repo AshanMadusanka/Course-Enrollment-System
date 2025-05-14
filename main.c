@@ -13,19 +13,16 @@ typedef struct {
     uint32_t course_id;
 }Course_t;
 
-typedef struct {
 
-    Student_t student;
-    Course_t course;
-}Students_t;
 
-Students_t students[50];
+Student_t student[50];
+Course_t course[50];
 uint32_t student_count;
 
-void addStudent(Students_t *students,uint32_t *student_count);
-void addCourse(Students_t *students,uint32_t *student_count);
-void enrollStudentInCourse(Students_t *students,uint32_t *student_count);
-void displayStudentAndCourses(Students_t *students,uint32_t *student_count);
+void addStudent(Student_t *students,uint32_t *student_count);
+void addCourse(Student_t *students,uint32_t *student_count);
+void enrollStudentInCourse(Student_t *students,uint32_t *student_count);
+void displayStudentAndCourses(Student_t *students,uint32_t *student_count);
 
 int main(void) {
 
@@ -33,7 +30,7 @@ int main(void) {
 }
 
 
-void addStudent(Students_t *students,uint32_t *student_count) {
+void addStudent(Student_t *students,uint32_t *student_count) {
 
     uint32_t student_id = 0;
     printf("Enter New Student ID: ");
@@ -41,7 +38,7 @@ void addStudent(Students_t *students,uint32_t *student_count) {
 
     for (uint32_t i = 0; i< *student_count;i++) {
 
-        if (students[i].student.student_id == student_id) {
+        if (students[i].student_id == student_id) {
 
             printf("You can't use this ID");
             return;
