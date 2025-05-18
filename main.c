@@ -83,26 +83,6 @@ void addStudent(Student_t *students, Course_t *course, uint32_t *student_count, 
     (*student_count)++;
     printf("You are successfully added new student!\n");
 
-    // uint32_t course_id = 0;
-    // printf("Enter course ID: ");
-    // scanf("%d",&course_id);
-    //
-    // for (uint32_t i = 0; i<*course_count; i++) {
-    //
-    //     if (course[i].course_id == course_id) {
-    //
-    //         students[*student_count].course->course_id = course_id;
-    //         strcpy( students[*student_count].course.course_name , course[i].course_name);
-    //         return;
-    //     }
-    //
-    //     printf("Course ID is incorrect!");
-    // }
-
-
-
-
-
 }
 
 void addCourse(Course_t *course,uint32_t *course_count) {
