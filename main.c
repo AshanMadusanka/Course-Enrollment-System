@@ -28,32 +28,35 @@ void addStudent(Student_t *students, Course_t *course, uint32_t *student_count, 
 void addCourse(Course_t *course,uint32_t *course_count);
 void enrollStudentInCourse(Student_t *students,Course_t *course,uint32_t *student_count, uint32_t *course_count);
 void displayStudentAndCourses(Student_t *students,Course_t *course,uint32_t *student_count, uint32_t *course_count);
-
+void displayMessages();
 int main(void) {
 
-    uint32_t user_choise = 0;
-    printf("Enter our choise: ");
-    scanf("%d",&user_choise);
+    while (1) {
+        displayMessages();
+        uint32_t user_choise = 0;
+        printf("Enter our choise: ");
+        scanf("%d",&user_choise);
 
-    switch (user_choise) {
+        switch (user_choise) {
 
-        case 1:
-            addStudent(student, course, &student_count, &course_count);
-        break;
+            case 1:
+                addStudent(student, course, &student_count, &course_count);
+            break;
 
-        case 2:
-            addCourse(course,&course_count);
-        break;
+            case 2:
+                addCourse(course,&course_count);
+            break;
 
-        case 3:
-            enrollStudentInCourse();
-        break;
+            case 3:
+                enrollStudentInCourse(student,course,&student_count,&course_count);
+            break;
 
-        case 4:
-            displayStudentAndCourses();
-        break;
-        default:
-            printf("Invalid input!!");
+            case 4:
+                displayStudentAndCourses(student,course,&student_count,&course_count);
+            break;
+            default:
+                printf("Invalid input!!");
+        }
     }
 }
 
@@ -62,7 +65,7 @@ void addStudent(Student_t *students, Course_t *course, uint32_t *student_count, 
 
     uint32_t student_id = 0;
     printf("Enter New Student ID: ");
-    scanf("%d",student_id);
+    scanf("%d",&student_id);
 
     for (uint32_t i = 0; i< *student_count;i++) {
 
@@ -158,17 +161,24 @@ void enrollStudentInCourse(Student_t *students,Course_t *course,uint32_t *studen
 
 }
 
-void displayStudentAndCourses(Student_t *students,Course_t *course,uint32_t *student_count) {
+void displayStudentAndCourses(Student_t *students,Course_t *course,uint32_t *student_count,uint32_t *course_count) {
 
+    for (uint32_t i = 0; i<*student_count; i++) {
+        printf("Student ID: %d\n",students[i].student_id);
+        printf("Student Name: %s\n",students[i].name);
 
-
+        for (uint32_t j = 0; j<students[i].stu_course_count; j++) {
+            printf("Enrolled Courses Name: %s and Course ID: %d\n",students[i].course[j].course_name,students[i].course[j].course_id);
+        }
+    }
+    printf("\n");
 }
 
 
 void displayMessages() {
 
-    printf("Add Student     (1)\n");
-    printf("Add Course     (2)\n");
-    printf("Show enroll Student in course     (2)\n");
-    printf("Show students and courses     (1)\n");
+    printf("Add Student                         (1)\n");
+    printf("Add Course                          (2)\n");
+    printf("Enrolling Student into courses      (3)\n");
+    printf("Show students and their courses     (4)\n");
 }
